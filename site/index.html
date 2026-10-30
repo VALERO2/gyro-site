@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My-Giro — интернет-магазин гироскутеров, сигвеев и электросамокатов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--dark:#303842;--or:#ffa019;--gr:#8191a6;--bg:#fbfbfb}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{font:300 20px/1.5 Inter,system-ui,sans-serif;color:var(--dark);background:#fff}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+:focus-visible{outline:2px solid var(--or);outline-offset:3px}
+.wrap{width:min(1134px,100% - 48px);margin-inline:auto}
+h2{font-weight:300;font-size:34px;line-height:44px}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:10px;background:var(--or);color:#fff;font-weight:700;font-size:13px;text-transform:uppercase;height:44px;padding:0 24px;transition:filter .15s}
+.btn:hover{filter:brightness(1.08)}
+.btn.w{background:#fff;color:var(--dark)}
+section{padding:80px 0}
+/* top */
+.top{background:#fff;height:62px}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:100%;gap:16px}
+.top p{font:400 16px/19px Inter,sans-serif}
+.top a.tel{text-decoration:underline;text-underline-offset:3px}
+.nav{background:var(--dark);height:104px;color:#fff}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;height:100%}
+.logo{font-weight:700;font-size:30px}
+.menu{display:flex;gap:25px;font:400 14px/17px Inter,sans-serif;text-transform:uppercase}
+.menu a:hover{color:var(--or)}
+.burger{display:none;width:40px;height:40px;font-size:26px;color:#fff}
+/* hero */
+.hero{position:relative;min-height:711px;color:#fff;text-align:center;background:var(--dark) url(images/hero.png) center/cover;padding:184px 24px 0}
+.hero:before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.35)}
+.hero>div{position:relative;max-width:760px;margin:auto}
+.hero h1{font-weight:300;font-size:56px;line-height:68px}
+.hero p{margin:24px 0 32px}
+/* advantages */
+.head{display:flex;justify-content:space-between;align-items:center}
+.arrows{display:flex;gap:24px}
+.arrows button{width:18px;height:20px;padding:0}
+.adv{display:flex;gap:30px;margin-top:54px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.adv::-webkit-scrollbar{display:none}
+.adv div{flex:1 0 220px;scroll-snap-align:start;text-align:center}
+.adv svg{width:64px;height:64px;fill:none;stroke:var(--or);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin-bottom:24px}
+/* about */
+#about{padding:34px 0 0}
+#about p{margin-top:30px}
+#about p+p{margin-top:24px}
+.sub{background:var(--or);color:#fff;margin-top:64px}
+.sub .wrap{display:flex;align-items:center;gap:24px;min-height:94px;padding-block:25px;flex-wrap:wrap}
+.sub b{font-weight:600;font-size:18px;line-height:26px;flex:1 1 300px}
+.sub input{width:210px;height:44px;background:none;border:1px solid #fff;border-radius:0;padding:0 16px;color:#fff;font:400 14px Inter,sans-serif}
+.sub input::placeholder{color:#fff}
+.sub .btn{width:216px;font-size:14px}
+/* features */
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin:48px 0}
+.feat ul{list-style:none;padding:0;display:grid;gap:18px}
+.feat li{display:flex;gap:12px;line-height:30px}
+.feat li:before{content:"+";font-size:23px;color:var(--or);width:18px}
+.feat ul:first-child li:before{content:"−";color:var(--gr)}
+/* catalog */
+.cat{background:var(--bg)}
+.pills{display:flex;gap:28px;font-size:16px}
+.pills button{height:32px;padding:0 17px;border-radius:16px;font-weight:300}
+.pills .on{background:var(--or);color:#fff}
+.goods{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:48px}
+.card{background:#fff;box-shadow:0 2px 12px rgba(48,56,66,.08);cursor:pointer;transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .ph{position:relative;aspect-ratio:261/247;overflow:hidden}
+.card img{width:100%;height:100%;object-fit:contain}
+.tag{position:absolute;left:0;top:18px;background:var(--or);color:#fff;font:400 14px/30px Inter,sans-serif;padding:0 16px}
+.card .in{padding:0 20px 20px}
+.card h3{font-weight:300;font-size:16px;line-height:23px;min-height:46px}
+.card b{display:block;margin-top:16px;font-size:20px}
+.card[hidden]{display:none}
+/* team */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:48px}
+.man{display:flex;gap:22px;background:var(--bg);height:176px}
+.man img{width:176px;height:176px;object-fit:cover;flex:none}
+.man div{padding-top:30px}
+.man b{font-weight:400;font-size:20px;line-height:25px;display:block}
+.man i{display:block;font-size:12px;line-height:15px;margin:10px 0 24px}
+.man .btn{height:32px;width:100px;padding:0;font-size:10px}
+/* brands */
+.brands{background:var(--bg);padding:66px 0}
+.brands .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.brands a{font-weight:700;font-size:50px;line-height:61px;color:#9b9b9b;transition:color .15s}
+.brands a:hover{color:var(--or)}
+/* info */
+.info{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:48px}
+.info a{position:relative;display:block;aspect-ratio:1;overflow:hidden}
+.info img{width:100%;height:100%;object-fit:cover}
+.info a:before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.35);z-index:1}
+.info span{position:absolute;z-index:2;inset:0;display:grid;place-items:center;padding:20px;text-align:center;color:#fff;font-weight:700;font-size:16px;line-height:22px}
+/* footer */
+footer{background:var(--bg);padding:48px 0;font:400 14px/22px Inter,sans-serif;color:var(--gr)}
+footer .wrap{display:grid;grid-template-columns:320px 1fr;gap:114px}
+footer b{display:block;color:var(--dark);font-weight:700}
+footer strong{font-size:20px;line-height:24px}
+footer p{margin:12px 0 24px}
+.cols{display:grid;grid-template-columns:repeat(3,180px);justify-content:space-between}
+.cols a{display:block;margin-top:12px}
+.cols a:hover{color:var(--or)}
+.cols b{margin-bottom:17px}
+/* dialog */
+dialog{border:0;border-radius:10px;padding:32px;width:min(440px,100% - 32px);color:var(--dark);font:400 15px/1.5 Inter,sans-serif}
+dialog::backdrop{background:rgba(48,56,66,.6)}
+dialog h3{font-weight:600;font-size:22px;margin-bottom:6px}
+dialog form{display:grid;gap:12px;margin-top:16px}
+dialog input,dialog textarea{width:100%;border:1px solid #d5dbe3;border-radius:8px;padding:12px 14px;font:inherit}
+dialog img{width:100%;height:220px;object-fit:contain;margin:12px 0}
+.x{position:absolute;right:12px;top:8px;font-size:28px;color:var(--gr)}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--dark);color:#fff;padding:14px 22px;border-radius:10px;font:400 15px Inter,sans-serif;opacity:0;pointer-events:none;transition:.25s;z-index:99}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media(max-width:1100px){.goods,.info{grid-template-columns:repeat(2,1fr)}.team{grid-template-columns:1fr}footer .wrap{grid-template-columns:1fr;gap:32px}.feat{grid-template-columns:1fr}.brands a{font-size:36px}}
+@media(max-width:720px){h2{font-size:28px}.top p{display:none}.top .wrap{justify-content:center}.burger{display:block}.menu{display:none;position:absolute;left:0;right:0;top:166px;z-index:5;flex-direction:column;background:var(--dark);padding:8px 24px 20px}.menu.open{display:flex}.nav{position:relative}.hero{padding-top:120px;min-height:560px}.hero h1{font-size:44px}.head{flex-wrap:wrap;gap:12px}.goods,.info{grid-template-columns:1fr}.cols{grid-template-columns:1fr 1fr;gap:20px}.sub input,.sub .btn{width:100%}.man{height:auto}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <p>Мы всегда рады помочь по телефону <a class="tel" href="tel:+79233989013">+7 923 398 9013</a></p>
+  <button class="btn" data-call>Заказать звонок</button>
+</div></div>
+
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#top">My-Giro</a>
+  <button class="burger" aria-label="Меню" aria-expanded="false">☰</button>
+  <nav class="menu">
+    <a href="#advantages">Преимущества</a><a href="#about">О нас</a><a href="#catalog">Каталог</a><a href="#consultants">Консультанты</a>
+  </nav>
+</div></header>
+
+<main id="top">
+<div class="hero"><div>
+  <h1>My-Giro</h1>
+  <p>Лучший интернет-магазин гироскутеров, сигвеев и электросамокатов<br>от известных мировых произодителей.</p>
+  <a class="btn w" href="#catalog">В каталог</a>
+</div></div>
+
+<section id="advantages"><div class="wrap">
+  <div class="head"><h2>Наши преимущества</h2>
+    <div class="arrows">
+      <button data-dir="-1" aria-label="Предыдущий слайд"><svg viewBox="0 0 18 20" fill="none" stroke="#303842"><path d="M12 2 4 10l8 8"/></svg></button>
+      <button data-dir="1" aria-label="Следующий слайд"><svg viewBox="0 0 18 20" fill="none" stroke="#303842"><path d="m6 2 8 8-8 8"/></svg></button>
+    </div></div>
+  <div class="adv">
+    <div><svg viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg><p>Гарантия качества</p></div>
+    <div><svg viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg><p>Быстрая доставка</p></div>
+    <div><svg viewBox="0 0 24 24"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg><p>Большой ассортимент</p></div>
+    <div><svg viewBox="0 0 24 24"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2z"/><path d="M21 16v2a4 4 0 0 1-4 4h-5"/></svg><p>Онлайн-консультант</p></div>
+  </div>
+</div></section>
+
+<section id="about" style="padding-bottom:0"><div class="wrap">
+  <h2>О нас</h2>
+  <p>В нашем интернет-магазине представлен большой выбор гироскутеров, сигвеев и электросамокатов от известных мировых производителей.</p>
+  <p>Все товары, представленные а нашем сайте отобраны лучшими специалистами в этой области. Купить гироскутер, электросамокат или сигвей недорого. Вы можете в нашем интернет-магазине в любое время, когда Вам удобно.<br>Доставка закзо осуществляется бесплатно в любую точку России.</p>
+</div>
+<form class="sub" id="sub"><div class="wrap">
+  <b>Подпишитесь на нашу рассылку<br>и оставайтесь в курсе событий</b>
+  <input name="name" placeholder="Имя" aria-label="Имя" required>
+  <input name="email" type="email" placeholder="Email" aria-label="Email" required>
+  <button class="btn w">Подписаться</button>
+</div></form></section>
+
+<section><div class="wrap">
+  <h2>Особенности гироскутеров</h2>
+  <div class="feat">
+    <ul><li>Трясет</li><li>Нет сиденья</li><li>Только для одного </li></ul>
+    <ul><li>Исключительная компактность</li><li>Небольшой вес</li><li>Экономичность</li></ul>
+    <ul><li>Доступность</li><li>Маневренность</li><li>Простой в освонии</li></ul>
+  </div>
+  <p>Этих преимуществ гироскутера достаточно для того, чтобы в своей нише данный вид транспорта являлся одним из самых лучших вариантов!</p>
+</div></section>
+
+<section class="cat" id="catalog"><div class="wrap">
+  <div class="head"><h2>Каталог</h2>
+    <div class="pills"><button class="on" data-f="all">Все</button><button data-f="Гироскутеры">Гироскутеры</button><button data-f="Сигвеи">Сигвеи</button></div></div>
+  <div class="goods">
+    <article class="card" tabindex="0" role="button" data-cat="Гироскутеры" data-brand="BALANCE"><div class="ph"><img src="images/product-1.jpg" alt="Smart Balance 10.5″ Красный"><span class="tag">Гироскутеры</span></div><div class="in"><h3>Smart Balance 10.5″<br>Красный</h3><b>31 480 р.</b></div></article>
+    <article class="card" tabindex="0" role="button" data-cat="Гироскутеры" data-brand="BALANCE"><div class="ph"><img src="images/product-2.jpg" alt="Smart Balance Premium Космос"><span class="tag">Гироскутеры</span></div><div class="in"><h3>Smart Balance Premium<br>Космос</h3><b>31 480 р.</b></div></article>
+    <article class="card" tabindex="0" role="button" data-cat="Сигвеи" data-brand="XIAOMI"><div class="ph"><img src="images/product-3.jpg" alt="Xiaomi Ninebot Mini Белый"><span class="tag">Сигвеи</span></div><div class="in"><h3>Xiaomi Ninebot Mini<br>Белый</h3><b>31 480 р.</b></div></article>
+    <article class="card" tabindex="0" role="button" data-cat="Электросамокаты" data-brand="KUGOO"><div class="ph"><img src="images/product-4.jpg" alt="Kugoo S3 Чёрный"><span class="tag">Электросамокаты</span></div><div class="in"><h3>Kugoo S3<br>Чёрный</h3><b>31 480 р.</b></div></article>
+  </div>
+</div></section>
+
+<section id="consultants"><div class="wrap">
+  <h2>Наши консультанты</h2>
+  <div class="team">
+    <div class="man"><img src="images/consultant-1.jpg" alt="Иван Алексеев"><div><b>Иван<br>Алексеев</b><i>Менеджер по продажам</i><button class="btn" data-write="Иван Алексеев">Написать</button></div></div>
+    <div class="man"><img src="images/consultant-2.jpg" alt="Анна Смирнова"><div><b>Анна<br>Смирнова</b><i>Менеджер по продажам</i><button class="btn" data-write="Анна Смирнова">Написать</button></div></div>
+    <div class="man"><img src="images/consultant-3.jpg" alt="Дмитрий Петров"><div><b>Дмитрий<br>Петров</b><i>Менеджер по продажам</i><button class="btn" data-write="Дмитрий Петров">Написать</button></div></div>
+  </div>
+</div></section>
+
+<div class="brands" id="brands"><div class="wrap">
+  <a href="#catalog" data-brand="XIAOMI">XIAOMI</a><a href="#catalog" data-brand="BALANCE">BALANCE</a><a href="#catalog" data-brand="KUGOO">KUGOO</a>
+</div></div>
+
+<section><div class="wrap">
+  <h2>Полезная информация</h2>
+  <div class="info">
+    <a href="#" data-soon><img src="images/info-1.jpg" alt=""><span>Как выбрать гироскутер?<br>Советы перед покупкой</span></a>
+    <a href="#" data-soon><img src="images/info-2.jpg" alt=""><span>Электросамокат.<br>Какой лучше и какой выбрать</span></a>
+    <a href="#" data-soon><img src="images/info-3.jpg" alt=""><span>Как выбрать сигвей?<br>На что обратить внимание?</span></a>
+    <a href="#" data-soon><img src="images/info-4.jpg" alt=""><span>Советы по выбору<br>гироскутера для ребенка</span></a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div><strong><b>My-Giro</b></strong><p>Интернет-магазин гироскутеров, сигвеев и электросамокатов. Мы помогаем выбрать подходящую модель, быстро доставляем заказы и остаёмся на связи после покупки.</p>Copyright © 2020 My-Giro</div>
+  <div class="cols">
+    <div><b>КОМПАНИЯ MY-GIRO</b><a href="#about">О нас</a><a href="#advantages">Наши преимущества</a><a href="#brands">Бренды</a></div>
+    <div><b>ПОКУПАТЕЛЯМ</b><a href="#catalog">Каталог</a><a href="#" data-info="Доставка|Доставка заказа осуществляется бесплатно в любую точку России.">Доставка</a><a href="#" data-soon>Оплата</a></div>
+    <div><b>ПОМОЩЬ</b><a href="#" data-soon>FAQ</a><a href="#" data-info="Контакты|Телефон: +7 923 398 9013">Контакты</a><a href="#" data-call>Поддержка</a></div>
+  </div>
+</div></footer>
+
+<dialog id="dlg"><button class="x" data-close aria-label="Закрыть">×</button><div id="db"></div></dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const dlg=$('#dlg'),db=$('#db'),toastEl=$('#toast');
+let tt;
+function toast(t){toastEl.textContent=t;toastEl.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>toastEl.classList.remove('on'),3000)}
+function show(html){db.innerHTML=html;dlg.showModal()}
+dlg.addEventListener('click',e=>{if(e.target===dlg||e.target.closest('[data-close]'))dlg.close()});
+const form=(title,note,fields,btn)=>`<h3>${title}</h3><p>${note}</p><form id="df">${fields}<button class="btn">${btn}</button></form>`;
+const nameF='<input name="name" placeholder="Ваше имя" required>',telF='<input name="tel" type="tel" placeholder="Телефон" required>';
+db.addEventListener('submit',e=>{e.preventDefault();dlg.close();toast('Спасибо! Мы свяжемся с вами в ближайшее время.')});
+
+document.addEventListener('click',e=>{
+  const t=e.target;
+  let el;
+  if(el=t.closest('[data-call]')){e.preventDefault();show(form('Заказать звонок','Оставьте номер — мы перезвоним.',nameF+telF,'Заказать звонок'))}
+  else if(el=t.closest('[data-write]')){show(form('Написать: '+el.dataset.write,'Ответим как можно скорее.',nameF+telF+'<textarea name="msg" rows="3" placeholder="Ваш вопрос"></textarea>','Отправить'))}
+  else if(el=t.closest('[data-info]')){e.preventDefault();const[a,b]=el.dataset.info.split('|');show(`<h3>${a}</h3><p>${b}</p>`)}
+  else if(el=t.closest('[data-soon]')){e.preventDefault();toast('Раздел скоро появится')}
+  else if(el=t.closest('.brands a')){filter(null,el.dataset.brand)}
+  else if(el=t.closest('.pills button')){filter(el.dataset.f)}
+  else if(el=t.closest('.arrows button')){const a=$('.adv');a.scrollBy({left:el.dataset.dir*a.clientWidth*.8})}
+  else if(el=t.closest('.card')){openCard(el)}
+});
+function openCard(c){
+  const n=$('h3',c).innerHTML.replace(/<br>/g,' '),p=$('b',c).textContent;
+  show(`<h3>${n}</h3><img src="${$('img',c).src}" alt=""><p><b>${p}</b></p><form id="df"><br>${nameF}${telF}<button class="btn">Заказать</button></form>`);
+}
+document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.classList.contains('card')){e.preventDefault();openCard(e.target)}});
+function filter(cat,brand){
+  $$('.pills button').forEach(b=>b.classList.toggle('on',!brand&&b.dataset.f===cat));
+  $$('.card').forEach(c=>c.hidden=brand?c.dataset.brand!==brand:cat!=='all'&&c.dataset.cat!==cat);
+}
+$('#sub').addEventListener('submit',e=>{e.preventDefault();e.target.reset();toast('Вы подписались на рассылку!')});
+const bg=$('.burger'),mn=$('.menu');
+bg.addEventListener('click',()=>bg.setAttribute('aria-expanded',mn.classList.toggle('open')));
+mn.addEventListener('click',()=>{mn.classList.remove('open');bg.setAttribute('aria-expanded','false')});
+</script>
+</body>
+</html>
